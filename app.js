@@ -1,20 +1,23 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 require('dotenv/config');
 const url = process.env.DB_CONNECTION;
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-
-
-app.use('/studios', studiosRoute);
-app.use('/films', filmsRoute);
 
 //Import routes
 const studiosRoute = require('./routes/studios');
 const filmsRoute = require('./routes/films');
+const authRoute = require('./routes/auth');
+
+app.use('/studios', studiosRoute);
+app.use('/films', filmsRoute);
+app.use('/api/user', authRoute);
 
 
 //Routes
