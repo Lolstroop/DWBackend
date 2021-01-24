@@ -14,10 +14,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const studiosRoute = require('./routes/studios');
 const filmsRoute = require('./routes/films');
 const authRoute = require('./routes/auth');
+const favRoute = require('./routes/favoritos');
 
 app.use('/studios', studiosRoute);
 app.use('/films', filmsRoute);
 app.use('/api/user', authRoute);
+app.use('/api/favoritos', favRoute);
 
 
 //Routes
